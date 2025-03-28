@@ -1,3 +1,4 @@
+import os
 import telegram
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, ContextTypes
@@ -228,7 +229,7 @@ async def error(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 # Main function
 def main() -> None:
-    token = "7589365578:AAErZ9vfkQcASAccPeDs0AX0NDwThJxD4oI"
+    token = os.getenv("BOT_TOKEN")
     application = Application.builder().token(token).build()
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CallbackQueryHandler(button))
